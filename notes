@@ -1,0 +1,24 @@
+main C file
+  load graphics
+  load lua
+  load audio
+  load database
+  initialize game via lua
+  start main loop
+
+graphics
+  lua gets 'redraw event'
+  causes lua to execute video commands
+  which calls C functions
+
+audio
+  audio runs in an OS thread
+  when more samples are requested, send 'buffer' events to lua
+  get samples from audio engine
+  lua uses C functions periodically to signal events to the sound engine
+
+database
+  the game uses one sqlite file for each game
+  provide a C query function
+  provide a C data manipulation function
+
